@@ -2,17 +2,30 @@
 # ---------------------------------------------------------------------------
 # process_line_layers.py
 #
-# Description: 
+# Description: Intersect (using "Identity" tool) line layers of interest with 2050 MC-FRM probability classificaiton polygons
+#              Capture output in a feature class , and export each output FC to a CSV file.
 # ---------------------------------------------------------------------------
-
-
+#
 # Import arcpy module
 import arcpy
 
+# Read input parameters
+# GDB for intermediate (temp) data
+temp_gdb = arcpy.GetParameterAsText(0)
+# Output Geodatabase
+output_gdb = arcpy.GetParameterAsText(1)
+# Output directory (i.e., folder) for CSV files
+csv_output_dir = arcpy.GetParameterAsText(2)
 
-# Input data "identity features" (for our purposes, "intersection features"
+# Sanity check: Echo input parameters
+arcpy.AddMessage('Temp GDB: ' + temp_gdb)
+arcpy.AddMessage('Output GDB: ' + output_gdb)
+arcpy.AddMessage('Output folder for CSVs: ' + csv_output_dir)
+
+# Input data "identity features" (for our purposes, "intersection features")
 # 1. 2050 MC-FRM inundation classification score polygons
-probability_score_2050 = "G:\\Certification_Activities\\Resiliency\\data\\mcfrm\\DERIVED_PRODUCTS\\probability_polygons\\probability_score_2050.shp"
+probability_score_2050 = "G:\\Certification_Activities\\Resiliency\\data\\mcfrm\\DERIVED_PRODUCTS\\CTPS_classification\\CTPS_probability_score_2050.shp"
+arcpy.AddMessage('Classification shapefile: ' + probability_score_2050)
 
 # Input data: "target features"
 # 2. Road Inventory - clipped to MPO region
@@ -28,25 +41,16 @@ input_fcs = [mbta_rt, mbta_cr, road_inv]
 
 aggregation_field_lists = [ "line;score", "comm_line;score", "F_Class;score" ]
 
-
-# GDB for intermediate (temp) data
-temp_gdb = "C:\\Users\\bkrepp\\Documents\\ArcGIS\\Default.gdb\\"
-
-# Output Geodatabase
-output_gdb = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\output_db.gdb\\"
-
 # Output feature classes
 temp = [ "mbta_rapid_transit", "commuter_rail", "road_inventory" ]
-output_fcs = [ output_gdb + fc + "_fc" for fc in temp ]
+output_fcs = [ output_gdb + "\\" + fc + "_fc" for fc in temp ]
 # Output tables
-output_tbls = [ output_gdb + fc + "_stats" for fc in temp ]
+output_tbls = [ output_gdb + "\\" + fc + "_stats" for fc in temp ]
 
-# Output folder for CSV files
-output_csv_dir = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\csv_out\\"
 
 # Output CSV files
 # Note because of the way the ESRI table-to-table tool works,
-# the output folder and file name are specified separately rater than as a single file path.
+# the output folder and file name are specified _separately_ rater than as a single file path.
 output_csv_fns = [ name + '_stats.csv' for name in temp ]
 
 # Generate the output feature classes, stats tables, and CSV files
@@ -61,5 +65,5 @@ for (in_fc, out_fc, aggr_field_list, out_tbl, out_csv_fn) in zip(input_fcs, outp
     # Convert length in meters to miles
     arcpy.CalculateField_management(out_tbl, "length_mi", "!SUM_shape_Length! * 0.000621", "PYTHON_9.3", "")
     #
-    arcpy.TableToTable_conversion(out_tbl, output_csv_dir, out_csv_fn)
+    arcpy.TableToTable_conversion(out_tbl, csv_output_dir, out_csv_fn)
 #
