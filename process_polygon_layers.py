@@ -34,7 +34,7 @@ tracts_raw = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data
 tracts = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\TEPops_tracts_2020_MPO.gdb\\TEPops_tracts_2020_MPO_NA_clip"
 
 # 3. Park-and-Ride Lots polygons
-CTPS_PNR_Lots_Polygons = "\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\\mpodata.mpodata.CTPS_PNR_Lots_Polygons"
+CTPS_PNR_Lots_Polygons = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.CTPS_PNR_Lots_Polygons"
 
 # Output feature classes
 ej_factors = [ "minority" , "lowinc", "lep", "disability", "elderly", "youth" ]
