@@ -31,7 +31,8 @@ arcpy.AddMessage('Classification shapefile: ' + probability_score_2050)
 # 2. 2020 Census tracts with EJ attributes
 tracts_raw = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\TEPops_tracts_2020_MPO.gdb\\TEPops_tracts_2020_MPO_NA"
 # 2.a. 2020 Census tracts with EJ attributes, clipped to extent of 2050 MC-FRM probability polygons
-tracts = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\TEPops_tracts_2020_MPO.gdb\\TEPops_tracts_2020_MPO_NA_clip"
+#      Note: Be sure to use data projected to "Mass State Plane NAD83 Meters", so linear units will be in _meters_!
+tracts = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\TEPops_tracts_2020_MPO.gdb\\TEPops_tracts_2020_MPO_NA_clip_EPSG26986"
 
 # 3. Park-and-Ride Lots polygons
 CTPS_PNR_Lots_Polygons = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.CTPS_PNR_Lots_Polygons"
@@ -39,13 +40,12 @@ CTPS_PNR_Lots_Polygons = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Da
 # Output feature classes
 ej_factors = [ "minority" , "lowinc", "lep", "disability", "elderly", "youth" ]
 
-
 # Generate the output feature classes, stats tables, and CSV files
 for ej_factor in ej_factors:
     s = 'Processing ' + ej_factor
     arcpy.AddMessage(s)
     # Name of FC input to "Identity" operation, containing records seelected from the tracts FC
-    input_fc = output_gdb + "\\" + ej_factor + '_temp'
+    input_fc = output_gdb + "\\" + ej_factor + '_tracts'
     # Name of output FC, stats table, and CSV file
     output_fc = output_gdb + "\\" + ej_factor + '_fc'
     output_tbl = output_gdb + "\\" + ej_factor + '_stats'
