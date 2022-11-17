@@ -9,12 +9,10 @@
 import arcpy
 
 # Read input parameters
-# GDB for intermediate (temp) data
-temp_gdb = arcpy.GetParameterAsText(0)
 # Output Geodatabase
-output_gdb = arcpy.GetParameterAsText(1)
+output_gdb = arcpy.GetParameterAsText(0)
 # Output directory (i.e., folder) for CSV files
-csv_output_dir = arcpy.GetParameterAsText(2)
+csv_output_dir = arcpy.GetParameterAsText(1)
 
 # Input data "identity features" (for our purposes, "intersection features")
 # 1. 2050 MC-FRM inundation classification score polygons
