@@ -10,15 +10,12 @@
 import arcpy
 
 # Read input parameters
-# GDB for intermediate (temp) data
-temp_gdb = arcpy.GetParameterAsText(0)
 # Output Geodatabase
-output_gdb = arcpy.GetParameterAsText(1)
+output_gdb = arcpy.GetParameterAsText(0)
 # Output directory (i.e., folder) for CSV files
-csv_output_dir = arcpy.GetParameterAsText(2)
+csv_output_dir = arcpy.GetParameterAsText(1)
 
 # Sanity check: Echo input parameters
-arcpy.AddMessage('Temp GDB: ' + temp_gdb) # Actually, not needed in this script.
 arcpy.AddMessage('Output GDB: ' + output_gdb)
 arcpy.AddMessage('Output folder for CSVs: ' + csv_output_dir)
 
