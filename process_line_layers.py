@@ -10,15 +10,12 @@
 import arcpy
 
 # Read input parameters
-# GDB for intermediate (temp) data
-temp_gdb = arcpy.GetParameterAsText(0)
 # Output Geodatabase
-output_gdb = arcpy.GetParameterAsText(1)
+output_gdb = arcpy.GetParameterAsText(0)
 # Output directory (i.e., folder) for CSV files
-csv_output_dir = arcpy.GetParameterAsText(2)
+csv_output_dir = arcpy.GetParameterAsText(1)
 
 # Sanity check: Echo input parameters
-arcpy.AddMessage('Temp GDB: ' + temp_gdb)
 arcpy.AddMessage('Output GDB: ' + output_gdb)
 arcpy.AddMessage('Output folder for CSVs: ' + csv_output_dir)
 
@@ -38,7 +35,6 @@ mbta_cr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\M
 road_inv = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\RoadInventory2020.gdb\\RoadInventory2020"
 
 input_fcs = [mbta_rt, mbta_cr, road_inv]
-
 aggregation_field_lists = [ "line;score", "comm_line;score", "F_Class;score" ]
 
 # Output feature classes
