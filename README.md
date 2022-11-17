@@ -1,10 +1,12 @@
 # mc-frm-tools
 Miscellaneous tools for working with the MC-FRM data.
 
-The first versions of the scripts to query point/line/polygon layers against the 2050 MC-FRM probability polygon layer are _not_ parameterized.
-That is to say, the input and output FileGeodatabases and output CSV directory are currently "hard-wired" in the script,
-but these are to be parameterized when time is available. The intention here was to get work on these tools in its current - if not final - state
-put under version control sooner rather than later.
+These scripts perform 'overlay analysis' on a variety of point, line, and polygon layers against
+the CTPS classification of the MC-FRM flood probability data for 2050. 
+
+Parameters:
+1. file geodatabase for output feature classes
+2. directory (folder) for output CSV files
 
 -- B. Krepp, attending metaphysician
-23 June 2022
+23 June 2022, 27 November 2022
