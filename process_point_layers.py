@@ -20,48 +20,49 @@ probability_score_2050 = "G:\\Certification_Activities\\Resiliency\\data\\mcfrm\
 arcpy.AddMessage('Classification shapefile: ' + probability_score_2050)
 
 # Input data: "target features"
-# 2. Bridge points
-# Pre-2022 bridge points (commented out as of 11/23/2022)
-#    bridges = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\MASSDOT_Bridge_Points"
-# 2020 bridge points
+# 2. Bridge points - 2022 bridge points as of 11/23/2022 
 bridges = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\MassDOT_bridges_2022.gdb\\MassDOT_bridge_points_2022"
 # 3. Culverts
 culverts = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\MASSDOT_Culverts"
 # 4. MBTA rapid transit stations
 mbta_rt_stations = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_MBTA_NODE"
 # 5. Commuter rail stations
-cr_stations = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_TRAINS_NODE"
+#    This FC contains feature extracted from MGIS_TRAINS_NODE where C_RAILSTAT = 'Y' and MAP_STA = 'Y'
+cr_stations = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\MGIS_TRAINS_NODE_active_mapsta"
 # 6. MassDOT-owned park-and-ride lots (points)
-#    Using 2022 bridge points as of 11/23/2022
 massdot_pnr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\Park_and_Ride_Lots_2022.gdb\\ParkandRideLots_1"
-# 7. Hospitals (acute care)
+# 7. CTPS-surveyed part-and-ride lots (centroid points from polygon features)
+ctps_pnr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\CTPS_PNR_Lots_Centroid_points"
+
+# 8. Hospitals (acute care)
 hospitals = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_HOSPITALS_PT"
-# 8. Hospitals non-acute care
+# 9. Hospitals non-acute care
 hospitals_nonacute = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_HOSPITALS_NONACUTE_PT"
-# 9. Community health centers
+# 10. Community health centers
 chcs = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_CHCS_PT"
-# 10. Long-term care facilities
+# 11. Long-term care facilities
 ltc = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_LONGTERMCARE_PT"
-# 11. Medical clinics
+# 12. Medical clinics
 clinics = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\medical_clinics"
-# 12. Town halls
+# 13. Town halls
 townhalls = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_TOWNHALLS_PT_MEMA"
-# 13. Police stations
+# 14. Police stations
 police = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_POLICESTATIONS_PT_MEMA"
-# 14. Fire stations
+# 15. Fire stations
 fire = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_FIRESTATIONS_PT_MEMA"
-# 15. EV charging stations
+# 16. EV charging stations
 ev_stations = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.DOE_CHARGEHUB_LOCS_BRMPO_20221012"
-# 16. BlueBikes stations
+# 17. BlueBikes stations
 blue_bikes = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\Bikeshare\\current_bluebikes_stations_090822.gdb\\current_bluebikes_stations_090822"
 
-input_fcs = [bridges, culverts, mbta_rt_stations, cr_stations, massdot_pnr, hospitals,
+input_fcs = [bridges, culverts, mbta_rt_stations, cr_stations, massdot_pnr, ctps_pnr, hospitals,
              hospitals_nonacute, chcs, ltc, clinics, townhalls, police, fire, ev_stations, blue_bikes]
 
 # Output feature classes
-temp = [ "bridges", "culverts", "mbta_rt_stations", "cr_stations", "massdot_pnr_lots_2022", "hospitals",
-         "hospitals_nonacute", "community_health_centers", "lonterm_care_facilities", "clinics", "townhalls", "police", "fire",
-         "ev_stations", "blue_bikes" ]         
+temp = [ "bridges", "culverts", "mbta_rt_stations", "cr_stations", "massdot_pnr_lots_2022",
+         "ctps_pnr_lots",  "hospitals", "hospitals_nonacute", "community_health_centers", 
+         "lonterm_care_facilities", "clinics", "townhalls", "police", "fire", "ev_stations", "blue_bikes" ]      
+ 
 output_fcs = [ output_gdb + "\\" + fc for fc in temp ]
 
 # Output CSV files
