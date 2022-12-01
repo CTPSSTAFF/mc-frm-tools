@@ -28,9 +28,9 @@ arcpy.AddMessage('Classification shapefile: ' + probability_score_2050)
 # 2. MBTA rapid transit lines - clipped to TOWNSSURVEY_POLY, selecting records with coastal_poly = 'NO'
 mbta_rt = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\MGIS_MBTA_ARC_clip_dissolve"
 # 3. Commuter rail lines - clipped to TOWNSSURVEY_POLY, selecting records with coastal_poly = 'NO'
-mbta_cr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\CTPS_Rail_arc_commuter"
+mbta_cr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\MGIS_TRAINS_RTE_TRAIN_clip"
 # 4. Road Inventory 2020
-road_inv = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\RoadInventory2020.gdb\\RoadInventory2020"
+# road_inv = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\RoadInventory2020.gdb\\RoadInventory2020"
 # 5. Road Inventory 2021
 road_inv_2021 = r"\\lindalino2\apollo\mpodata\data\roads_gdb\RoadInv2021_and_pavement.gdb\RoadInventory"
 
@@ -39,6 +39,7 @@ aggregation_field_lists = [ "line;score", "comm_line;score", "F_Class;score", "F
 
 # Output feature classes
 temp = [ "mbta_rapid_transit", "commuter_rail", "road_inventory", "road_inventory_2021" ]
+
 output_fcs = [ output_gdb + "\\" + fc + "_fc" for fc in temp ]
 # Output tables
 output_tbls = [ output_gdb + "\\" + fc + "_stats" for fc in temp ]
