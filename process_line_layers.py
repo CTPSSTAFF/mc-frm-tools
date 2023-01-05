@@ -34,11 +34,11 @@ mbta_cr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\M
 # 5. Road Inventory 2021
 road_inv_2021 = r"\\lindalino2\apollo\mpodata\data\roads_gdb\RoadInv2021_and_pavement.gdb\RoadInventory"
 
-input_fcs = [mbta_rt, mbta_cr, road_inv, road_inv_2021]
-aggregation_field_lists = [ "line;score", "comm_line;score", "F_Class;score", "F_Class;score"  ]
+input_fcs = [mbta_rt, mbta_cr, road_inv_2021]
+aggregation_field_lists = [ "line;score", "comm_line;score",  "F_Class;score"  ]
 
 # Output feature classes
-temp = [ "mbta_rapid_transit", "commuter_rail", "road_inventory", "road_inventory_2021" ]
+temp = [ "mbta_rapid_transit", "commuter_rail",  "road_inventory_2021" ]
 
 output_fcs = [ output_gdb + "\\" + fc + "_fc" for fc in temp ]
 # Output tables
