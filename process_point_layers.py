@@ -33,42 +33,54 @@ cr_stations = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Dat
 massdot_pnr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\Park_and_Ride_Lots_2022.gdb\\ParkandRideLots_1"
 # 7. CTPS-surveyed part-and-ride lots (centroid points from polygon features)
 ctps_pnr = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\CTPS_PNR_Lots_Centroid_points"
+# 8, Freight rail yards (MassDOT)
+freight_rail_yards = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MASSDOT_FREIGHT_RAIL_YARDS"
+# 9. Seaports (MassDOT)
+seaports = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MASSDOT_SEAPORTS"
+# 10, Intermodal Freight Facilities Rail TOFC COFC
+intermodal_freight = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\Intermodal_Freight_Facilities_Rail_TOFC_COFC"
 
-# 8. Hospitals (acute care)
+# 11. Hospitals (acute care)
 hospitals = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_HOSPITALS_PT"
-# 9. Hospitals non-acute care
+# 12. Hospitals non-acute care
 hospitals_nonacute = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_HOSPITALS_NONACUTE_PT"
-# 10. Community health centers
+# 13. Community health centers
 chcs = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_CHCS_PT"
-# 11. Long-term care facilities
+# 14. Long-term care facilities
 ltc = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_LONGTERMCARE_PT"
-# 12. Medical clinics
+# 15. Medical clinics
 clinics = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\MC_FRM_Analysis\\reference_data.gdb\\medical_clinics"
-# 13. Town halls
+# 16. Town halls
 townhalls = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_TOWNHALLS_PT_MEMA"
-# 14. Police stations
+# 17. Police stations
 police = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_POLICESTATIONS_PT_MEMA"
-# 15. Fire stations
+# 18. Fire stations
 fire = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.MGIS_FIRESTATIONS_PT_MEMA"
-# 16. EV charging stations
+# 19. EV charging stations
 ev_stations = "\\\\lindalino2\users\Public\Documents\Public ArcGIS\Database Connections\CTPS 10.6.sde\mpodata.mpodata.DOE_CHARGEHUB_LOCS_BRMPO_20221012"
-# 17. BlueBikes stations
+# 20. BlueBikes stations
 blue_bikes = "G:\\Certification_Activities\\2023 LRTP Destination 2050\\GIS_Data\\Bikeshare\\current_bluebikes_stations_090822.gdb\\current_bluebikes_stations_090822"
 
-input_fcs = [bridges, culverts, mbta_rt_stations, cr_stations, massdot_pnr, ctps_pnr, hospitals,
-             hospitals_nonacute, chcs, ltc, clinics, townhalls, police, fire, ev_stations, blue_bikes]
+input_fcs = [bridges, culverts, mbta_rt_stations, cr_stations, massdot_pnr, ctps_pnr, 
+             freight_rail_yards, seaports, intermodal_freight,
+             hospitals, hospitals_nonacute, chcs, ltc, clinics, townhalls, police, fire, ev_stations, blue_bikes]
+             
 
+             
 # Output feature classes
-temp = [ "bridges", "culverts", "mbta_rt_stations", "cr_stations", "massdot_pnr_lots_2022",
-         "ctps_pnr_lots",  "hospitals", "hospitals_nonacute", "community_health_centers", 
-         "lonterm_care_facilities", "clinics", "townhalls", "police", "fire", "ev_stations", "blue_bikes" ]      
- 
+temp = [ "bridges", "culverts", "mbta_rt_stations", "cr_stations", "massdot_pnr_lots_2022", "ctps_pnr_lots",
+         "freight_rail_yards", "seaports", "intermodal_freight",  
+         "hospitals", "hospitals_nonacute", "community_health_centers", 
+         "lonterm_care_facilities", "clinics", "townhalls", "police", "fire", "ev_stations", "blue_bikes" ]  
+         
+
+     
 output_fcs = [ output_gdb + "\\" + fc for fc in temp ]
 
 # Output CSV files
 # Note because of the way the ESRI table-to-table tool works,
 # the output folder and file name are specified separately rater than as a single file path.
-output_csv_fns = [ name + '.csv' for name in temp]
+output_csv_fns = [ name + '.csv' for name in temp ]
 
 # Generate the output feature classes and CSV files
 for (in_fc, out_fc, out_csv_fn) in zip(input_fcs, output_fcs, output_csv_fns):
