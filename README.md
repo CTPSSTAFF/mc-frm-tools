@@ -12,7 +12,7 @@ with the polygon representing each level of flood risk.
 The analysis is performed on the following feature classes:
 * Point
   * Bridge points (MassDOT)
-  * Bulverts (MassDOT)
+  * Culverts (MassDOT)
   * MBTA rapid transit stations
   * MBTA commuter rail stations
   * MassDOT-owned park-and-ride lots 
