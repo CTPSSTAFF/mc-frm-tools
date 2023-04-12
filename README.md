@@ -28,8 +28,8 @@ The analysis is performed on the following feature classes:
   * Intermodal Freight Facilities Rail TOFC COFC
   * Hospitals (acute care)
   * Hospitals non-acute care
-  * Community health center
-  * Long-term care facilitie
+  * Community health centers
+  * Long-term care facilities
   * Medical clinics
   * Town halls
   * Police stations
