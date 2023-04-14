@@ -1,5 +1,5 @@
 # mc-frm-tools
-A set of tools for performing overlay analysis on a collection of point, line, and polygon feature classes using the classified MC-FRM flood probability data.    
+A set of tools for performing overlay analysis on a collection of point, line, and polygon feature classes using the classified MC-FRM flood probability data. 
 There are two sets of tools:
 1. Tools for performing overlay analysis on the classified 2050 MC-FRM flood probabiltiy data
 2. Tools for performing overlay analysis on the classified 'current conditions' MC-FRM flood probability data
