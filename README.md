@@ -4,8 +4,8 @@ There are two sets of tools:
 1. Tools for performing overlay analysis on the classified 2050 MC-FRM flood probabiltiy data
 2. Tools for performing overlay analysis on the classified 'current conditions' MC-FRM flood probability data
 
-Set #1 was used for the Needs Assessment for the 2050 Long Range Transportation Plan; overlay analysis is performed on a variety of data.
-Set #1 will be used for presenting current conditions; overlay analysis is performed on only one dataset.
+Set #1 was used for the Needs Assessment for the 2050 Long Range Transportation Plan; overlay analysis is performed on a variety of data.  
+Set #2 will be used for presenting current conditions; overlay analysis is performed on only one dataset.
 
 ## Overview of '2050 Condition Analysis' Tools
 The analysis is performed on __point__ feature classes using a simple test for geometric intersection.  
