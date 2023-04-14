@@ -8,11 +8,14 @@ Set #1 was used for the Needs Assessment for the 2050 Long Range Transportation 
 Set #1 will be used for presenting current conditions; overlay analysis is performed on only one dataset.
 
 ## Overview of '2050 Condition Analysis' Tools
-The analysis is performed on __point__ feature classes using a simple test for geometric intersection. The analysis is performed on the __line__ and __polygon__
-features using the ESRI "Identity" tool, which reports how much of each feature intersects the "identity" feature,
+The analysis is performed on __point__ feature classes using a simple test for geometric intersection.  
+
+The analysis is performed on the __line__ and __polygon__ features using the ESRI "Identity" tool, 
+which reports how much of each feature intersects the "identity" feature,
 in this case the 2050 flood risk polygons.
-The "Summary Statistics" tool is then run to calculate how much of each "class" of input feature \(e.g., roads with a functional classification of X\) intersect
-with the polygon representing each level of flood risk.
+The "Summary Statistics" tool is then run to calculate the sum how much of each "class" of 
+input feature \(e.g., roads with a functional classification of _N_\) intersect with the polygon representing each level of flood risk.
+Lastly, these sums are converted from meters (or square meters) to miles (or square miles.)
 
 ### Input Feature Classes
 The analysis is performed on the following feature classes:
