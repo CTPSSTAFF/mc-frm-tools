@@ -85,5 +85,8 @@ Each of these tools take 2 parameters:
 1. file geodatabase, for output feature classes
 2. directory (folder), for output CSV files
 
--- B. Krepp   
-23 June 2022, 27 November 2022, 12 April 2023
+## Colophon
+Author: Ben Krepp  
+Date: 23 June 2022  
+Updated: 27 November 2022, 12 April 2023  
+Location: Cyberspace
